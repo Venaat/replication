@@ -13,8 +13,8 @@ public class Main {
 
     final static String USER_DIR = System.getProperty("user.dir");
     public static void main(String[] args) throws Exception {
-        boolean sout_debug = true;
-        boolean testProperties = true;
+        boolean sout_debug = false;
+        boolean testProperties = false;
         boolean testRelativePath = false;
         boolean testAbsolutePath = false;
         boolean testAncestors = false;

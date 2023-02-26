@@ -4,12 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="374350ce-6f9e-4238-a343-ed71f08d60d2" name="Changes" comment="Applications de synchronisation (changements et conflits)">
-      <change afterPath="$PROJECT_DIR$/systemeB/synHome/subdir3/beta.txt" afterDir="false" />
+    <list default="true" id="374350ce-6f9e-4238-a343-ed71f08d60d2" name="Changes" comment="Rétablissement du bon ordre des arguments dans la fonction synchronize du Synchronizer">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reference/synHome/x.txt" beforeDir="false" afterPath="$PROJECT_DIR$/reference/synHome/x.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reference/synHome/y.txt" beforeDir="false" afterPath="$PROJECT_DIR$/reference/synHome/y.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LocalFileSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LocalFileSystem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Synchronizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Synchronizer.java" afterDir="false" />
     </list>
@@ -131,7 +127,14 @@
       <option name="project" value="LOCAL" />
       <updated>1677422401388</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Rétablissement du bon ordre des arguments dans la fonction synchronize du Synchronizer">
+      <created>1677423789120</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1677423789120</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -154,6 +157,7 @@
     <MESSAGE value="Différenciation conflits et changements i.e modifications des conditions de cas de reconcile" />
     <MESSAGE value="Précision des conflits et changements à appliquer&#10;On note qu'on se bagarre avec les File.separator, éventuellement essayer de faire le ménage à un moment" />
     <MESSAGE value="Applications de synchronisation (changements et conflits)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Applications de synchronisation (changements et conflits)" />
+    <MESSAGE value="Rétablissement du bon ordre des arguments dans la fonction synchronize du Synchronizer" />
+    <option name="LAST_COMMIT_MESSAGE" value="Rétablissement du bon ordre des arguments dans la fonction synchronize du Synchronizer" />
   </component>
 </project>
