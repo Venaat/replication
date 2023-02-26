@@ -15,6 +15,7 @@ public class Synchronizer {
 
         List<String> dirtyPaths1 = computeDirty(fs1, refCopy1, "");
         List<String> dirtyPaths2 = computeDirty(fs2, refCopy2, "");
+
         reconcile(fs1, dirtyPaths1, fs2, dirtyPaths2, "");
     }
 
@@ -92,6 +93,14 @@ public class Synchronizer {
     public List<String> computeDirty(FileSystem fs,
                                      FileSystem lastSync,
                                      String currentRelativePath) throws IOException {
+        List<String> dirties = computeDirtyR(fs,lastSync,currentRelativePath);
+        dirties.addAll(computeDirtyR(lastSync,fs,currentRelativePath));
+        return dirties;
+    }
+
+    public List<String> computeDirtyR(FileSystem fs,
+                                     FileSystem lastSync,
+                                     String currentRelativePath) throws IOException {
 
         String pathCurrent = fs.getAbsolutePath(currentRelativePath);
 
@@ -140,7 +149,6 @@ public class Synchronizer {
         return new ArrayList<>(dirties);
     }
 
-
     /**
      * Choix : on priorise les changements de fs1.
      */
@@ -166,12 +174,16 @@ public class Synchronizer {
         File fileToCopy = new File(fileToCopyPath);
         File copyToFile = new File(copyToFilePath);
 
-        if (fileToCopy.isFile()){
-            shouldUpdate.copyFile(fileToCopy, copyToFile);
-        }else{
-            shouldUpdate.copyDirectory(fileToCopy, copyToFile);
+        if(fileToCopy.exists()){
+            if (fileToCopy.isFile()){
+                shouldUpdate.copyFile(fileToCopy, copyToFile);
+            }else{
+                shouldUpdate.copyDirectory(fileToCopy, copyToFile);
+            }
         }
-
+        else {
+            shouldUpdate.remove(copyToFile);
+        }
 
 
     }

@@ -31,4 +31,6 @@ public interface FileSystem {
     public void replace(String absolutePathTargetFS,
                         FileSystem fsSource,
                         String absolutePathSourceFS);
+
+    public void remove(File target) throws IOException;
 }

@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-
 public class LocalFileSystem implements FileSystem{
     String root;            // "/../../../ (puis synHome) "
     String ref;             // "/../../reference/synHome "
@@ -139,9 +138,9 @@ public class LocalFileSystem implements FileSystem{
     public void createReference(){
         this.ref =
                 this.root
-                + "/"
+                + File.separator
                 + "reference"
-                + "/"
+                + File.separator
                 + this.syncRoot;
 
         refFile = new File(ref);
@@ -167,6 +166,11 @@ public class LocalFileSystem implements FileSystem{
     public File copyDirectory(File input, File output) throws IOException {
         FileUtils.copyDirectory(input, output);
         return null;
+    }
+
+    public void remove(File target) throws IOException {
+        //System.out.println("[REMOVE THIS] deleting "+target);
+        FileUtils.delete(target);
     }
 
     @Override
