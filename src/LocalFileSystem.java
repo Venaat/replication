@@ -149,9 +149,11 @@ public class LocalFileSystem implements FileSystem{
 
     /**
      * Crée le dossier au path de référence donné,
+     * supprimer l'ancien
      * @throws IOException
      */
     public void generateReference() throws IOException{
+        FileUtils.deleteDirectory(refFile);
         FileUtils.copyDirectory(syncFile, refFile);
     }
 

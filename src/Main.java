@@ -1,7 +1,6 @@
 import java.io.File;
 import java.io.IOException;
 
-// TODO : supprimer le contenu du dossier ref après chaque exécution
 // TODO : utiliser File.separator au lieu des "/" dans le main
 // TODO : faire de vrais tests au lieu des sout
 
@@ -14,15 +13,15 @@ public class Main {
 
     final static String USER_DIR = System.getProperty("user.dir");
     public static void main(String[] args) throws Exception {
-        boolean sout_debug = false;
-        boolean testProperties = false;
+        boolean sout_debug = true;
+        boolean testProperties = true;
         boolean testRelativePath = false;
         boolean testAbsolutePath = false;
         boolean testAncestors = false;
         boolean testGetChildren = false;
         // Attention à bien créer la référence au moins une fois avant de lancer la synchronisation
         // Ou créer les dossiers à la main, voir doc de generateReference()
-        boolean createRef = false;
+        boolean createRef = false ;
         boolean testComputeDirty = true;
         boolean testReconcile = true;
 
@@ -44,18 +43,23 @@ public class Main {
             Test des get et propriétés simples
          */
         if (testProperties){
-            System.out.println("(Main) Test propriétés : ");
-            System.out.println("--------- SystA se trouve ici : " + directoryRoot + "---------");
-            System.out.println("Root A : " + fileSystem.getRoot());
-            System.out.println("SyncRoot A : " + fileSystem.getSyncRoot());
-            System.out.println("Référence A : " + refSystem.getRoot() + File.separator + refSystem.getSyncRoot());
-            System.out.println();
 
-            System.out.println("--------- SystB se trouve ici : " + directoryRootB + "---------");
-            System.out.println("Root B : " +fileSystem2.getRoot());
-            System.out.println("SyncRoot B : " + fileSystem2.getSyncRoot());
-            System.out.println("Référence B : " + refSystem2.getRoot() + File.separator + refSystem2.getSyncRoot());
-            System.out.println();
+            // assert(
+
+            if (sout_debug) {
+                System.out.println("(Main) Test propriétés : ");
+                System.out.println("--------- SystA se trouve ici : " + directoryRoot + "---------");
+                System.out.println("Root A : " + fileSystem.getRoot());
+                System.out.println("SyncRoot A : " + fileSystem.getSyncRoot());
+                System.out.println("Référence A : " + refSystem.getRoot() + File.separator + refSystem.getSyncRoot());
+                System.out.println();
+
+                System.out.println("--------- SystB se trouve ici : " + directoryRootB + "---------");
+                System.out.println("Root B : " + fileSystem2.getRoot());
+                System.out.println("SyncRoot B : " + fileSystem2.getSyncRoot());
+                System.out.println("Référence B : " + refSystem2.getRoot() + File.separator + refSystem2.getSyncRoot());
+                System.out.println();
+            }
         }
 
         /*
@@ -98,6 +102,7 @@ public class Main {
         }
 
         if (testAbsolutePath){
+
             System.out.println("Absolute path :");
             System.out.println(fileSystem.getAbsolutePath("/subdir1/z.txt"));
         }

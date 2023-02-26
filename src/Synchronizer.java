@@ -13,8 +13,8 @@ public class Synchronizer {
         FileSystem refCopy1 = fs1.getReference();
         FileSystem refCopy2 = fs2.getReference();
 
-        List<String> dirtyPaths1 = computeDirty(refCopy1, fs1, "");
-        List<String> dirtyPaths2 = computeDirty(refCopy2, fs2, "");
+        List<String> dirtyPaths1 = computeDirty(fs1, refCopy1, "");
+        List<String> dirtyPaths2 = computeDirty(fs2, refCopy2, "");
         reconcile(fs1, dirtyPaths1, fs2, dirtyPaths2, "");
     }
 
@@ -31,13 +31,17 @@ public class Synchronizer {
                 currentRelativePath = File.separator + fs1.getSyncRoot();
             }
 
-
+        System.out.println(dirtyPaths2);
+        System.out.println("?? " + currentRelativePath + " ? " + dirtyPaths2.contains(currentRelativePath) );
         /* Cas n°1 : si le path indiqué n'a eu aucune modification */
-            if (!dirtyPaths1.contains(currentRelativePath) && !dirtyPaths2.contains(currentRelativePath))
+            if (!dirtyPaths1.contains(currentRelativePath) && !dirtyPaths2.contains(currentRelativePath)){
+                System.out.println(currentRelativePath);
                 return;
+            }
 
             /* Cas n°2 : si file est un dossier et dans A, et dans B */
             if (file1.isDirectory() && file2.isDirectory()){
+                System.out.println("both dir");
 
                 List<String> childrenA = fs1.getChildren(file1.getPath());
                 List<String> childrenB = fs2.getChildren(file2.getPath());
@@ -52,14 +56,17 @@ public class Synchronizer {
 
                 /* Cas n°3 : not dirty to A, dirty to B */
             }else if (dirtyPaths2.contains(currentRelativePath) && !dirtyPaths1.contains(currentRelativePath)) {
+                System.out.println("Dirty b");
                 applyChanges(fs1, fs2, currentRelativePath);
 
                 /* Cas n°4 : not dirty to B, dirty to A */
             }else if (dirtyPaths1.contains(currentRelativePath) && !dirtyPaths2.contains(currentRelativePath)) {
+                System.out.println("dirty A)");
                 applyChanges(fs2, fs1, currentRelativePath);
 
                 /* Cas n°5 : conflits */
             }else{
+                System.out.println("Conflit");
                 manageConflict(fs1, fs2, currentRelativePath);
             }
         }
