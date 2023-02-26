@@ -4,27 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="374350ce-6f9e-4238-a343-ed71f08d60d2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/commons_io_2_11_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/commons_io_2_11_0_sources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/commons_lang3_3_12_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/reference/synHome/subdir1/z.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/reference/synHome/x.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/reference/synHome/y.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/replication.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/FileSystem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/LocalFileSystem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Synchronizer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/synHome/subdir1/z.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/synHome/subdir2/subsubdir1/alpha.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/synHome/x.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/synHome/y.txt" afterDir="false" />
+    <list default="true" id="374350ce-6f9e-4238-a343-ed71f08d60d2" name="Changes" comment="computeDirty opérationnel">
+      <change afterPath="$PROJECT_DIR$/systemeB/synHome/subdir1/z.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/systemeB/synHome/subdir2/subsubdir1/alpha.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/systemeB/synHome/x.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/systemeB/synHome/y.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reference/synHome/subdir1/z.txt" beforeDir="false" afterPath="$PROJECT_DIR$/reference/synHome/subdir1/z.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reference/synHome/x.txt" beforeDir="false" afterPath="$PROJECT_DIR$/reference/synHome/x.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/LocalFileSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LocalFileSystem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Synchronizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Synchronizer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/synHome/subdir1/z.txt" beforeDir="false" afterPath="$PROJECT_DIR$/synHome/subdir1/z.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/synHome/x.txt" beforeDir="false" afterPath="$PROJECT_DIR$/synHome/x.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,6 +80,40 @@
       <option name="presentableId" value="Default" />
       <updated>1677331091551</updated>
     </task>
+    <task id="LOCAL-00001" summary="computeDirty opérationnel">
+      <created>1677401806172</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1677401806172</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="computeDirty opérationnel" />
+    <option name="LAST_COMMIT_MESSAGE" value="computeDirty opérationnel" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Synchronizer.java</url>
+          <line>67</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

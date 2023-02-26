@@ -59,6 +59,8 @@ public class LocalFileSystem implements FileSystem{
 
     /**
      * Pas encore utilisée, à tester
+     * On dirait que ça utilise le working directory, parce que fonctionne
+     * lorsqu'on lui donne "synHome" en paramètre par ex
      */
     @Override
     public List<String> getChildren(String path) throws IllegalArgumentException {
@@ -73,12 +75,16 @@ public class LocalFileSystem implements FileSystem{
 
             return children;
         }else{
-           throw new IllegalArgumentException("L'argument donné est un fichier.");
+            List<String> children = new ArrayList<>();
+            children.add(path);
+            return children;
         }
     }
 
     /**
      * Ancêtres jusque la racine du dossier synchronisé
+     * Utilise la fonction getRelativePath
+     *
      * Actuellement : donner en paramètre un chemin absolu
      */
     @Override

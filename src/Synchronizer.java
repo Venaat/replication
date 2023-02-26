@@ -24,7 +24,61 @@ public class Synchronizer {
                           List<String> dirtyPaths2,
                           String currentRelativePath){
 
+            //currentRelativePath = fs1.getAbsolutePath(currentRelativePath);
+            File file1 = new File(fs1.getAbsolutePath(currentRelativePath));
+            File file2 = new File(fs2.getAbsolutePath(currentRelativePath));
+
+            /* Cas n°1 : si le path indiqué n'a eu aucune modification */
+            if (dirtyPaths1.contains(currentRelativePath) && dirtyPaths2.contains(currentRelativePath))
+                return;
+
+        /*
+            System.out.println("Abspath1 :" + file1.getAbsolutePath());
+            System.out.println("Abspath2 : " + file2.getAbsolutePath());
+            System.out.println(file1.isDirectory());
+            System.out.println(file2.isDirectory());
+
+         */
+
+            /* Cas n°2 : si file est un dossier et dans A, et dans B */
+            if (file1.isDirectory() && file2.isDirectory()){
+
+                List<String> childrenA = fs1.getChildren(file1.getPath());
+                List<String> childrenB = fs2.getChildren(file2.getPath());
+                /*
+                System.out.println("Children A : " + childrenA);
+                System.out.println("Children B : " + childrenB);*/
+
+                List<String> plist = getPlist(childrenA, childrenB);
+
+                for (String path : plist) reconcile(fs1, dirtyPaths1, fs2, dirtyPaths2, path);
+
+                /* Cas n°3 : not dirty to A, dirty to B */
+            }else if (dirtyPaths2.contains(currentRelativePath)) {
+                applyChanges(fs1, fs2, currentRelativePath);
+
+                /* Cas n°4 : not dirty to B, dirty to A */
+            }else if (dirtyPaths1.contains(currentRelativePath)){
+                applyChanges(fs2, fs1, currentRelativePath);
+
+                /* Cas n°5 : conflits */
+            }else{
+                manageConflict(fs1, fs2, currentRelativePath);
+            }
+        }
+
+
+    /**
+     * Retourne la liste fusionnée et sans double des enfants de A et de B
+     */
+    private List<String> getPlist(List<String> childrenA, List<String> childrenB) {
+        for (String child : childrenB){
+            if (!childrenA.contains(child)) childrenA.add(child);
+        }
+        Collections.sort(childrenA);
+        return childrenA;
     }
+
 
     /**
      * @param currentRelativePath : ""
@@ -89,5 +143,14 @@ public class Synchronizer {
         return new ArrayList<>(dirties);
     }
 
+
+    private void manageConflict(FileSystem fs1, FileSystem fs2, String currentRelativePath) {
+        System.out.println("Un conflit est géré ici : " + currentRelativePath);
+    }
+
+    private void applyChanges(FileSystem fs2, FileSystem fs1, String currentRelativePath) {
+        System.out.println("Des changements sont appliqués");
+
+    }
 
 }
