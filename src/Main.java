@@ -131,8 +131,10 @@ public class Main {
             Test Synchronizer
          */
         if (testComputeDirty){
+            System.out.println("--------- Dirties ---------");
             System.out.println("(Main) Dirties de A : " + sync.computeDirty(fileSystem, refSystem, ""));
             System.out.println("(Main) Dirties de B : " + sync.computeDirty(fileSystem2, refSystem2, ""));
+            System.out.println();
         }
 
         /*

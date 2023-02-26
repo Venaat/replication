@@ -142,11 +142,24 @@ public class Synchronizer {
 
 
     private void manageConflict(FileSystem fs1, FileSystem fs2, String currentRelativePath) {
-        System.out.println("Un conflit est géré ici : " + currentRelativePath);
+        currentRelativePath = StringUtils.substringAfter(currentRelativePath, File.separator);
+        System.out.println(" --- On va gérer le conflit : " + currentRelativePath);
+        System.out.println("Du fichier : " + fs1.getAbsolutePathNoSyncHome(currentRelativePath));
+        System.out.println("Avec le fichier : " + fs2.getAbsolutePathNoSyncHome(currentRelativePath));
+        System.out.println();
     }
 
+    /**
+     * " Appliquer sur @param fs2
+     * les changements qu'a fait @param fs1
+     * sur le fichier au chemin @param currentRelativePath "
+     */
     private void applyChanges(FileSystem fs2, FileSystem fs1, String currentRelativePath) {
-        System.out.println("Des changements sont appliqués ici : " + currentRelativePath);
+        currentRelativePath = StringUtils.substringAfter(currentRelativePath, File.separator);
+        System.out.println(" --- Des changements sont appliqués ici : " + currentRelativePath);
+        System.out.println("On va copier ce fichier : " + fs1.getAbsolutePathNoSyncHome(currentRelativePath));
+        System.out.println("Sur ce fichier : " + fs2.getAbsolutePathNoSyncHome(currentRelativePath));
+        System.out.println();
 
     }
 
