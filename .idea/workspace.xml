@@ -4,11 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="374350ce-6f9e-4238-a343-ed71f08d60d2" name="Changes" comment="Re-modification de getChildren">
+    <list default="true" id="374350ce-6f9e-4238-a343-ed71f08d60d2" name="Changes" comment="Ca fonctionne mais l'état de mon code me donne envie de pleurer">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FileSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FileSystem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LocalFileSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LocalFileSystem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Synchronizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Synchronizer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/synHome/x.txt" beforeDir="false" afterPath="$PROJECT_DIR$/synHome/x.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/systemeB/synHome/x.txt" beforeDir="false" afterPath="$PROJECT_DIR$/systemeB/synHome/x.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,7 +101,14 @@
       <option name="project" value="LOCAL" />
       <updated>1677420159026</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Ca fonctionne mais l'état de mon code me donne envie de pleurer">
+      <created>1677420427089</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1677420427089</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -119,6 +127,7 @@
     <MESSAGE value="reconcile fonctionne sur les premiers fichiers du dossier, mais pas sur les sous-dossiers" />
     <MESSAGE value="Quelques modifs pour getChildren de LocalFileSystem" />
     <MESSAGE value="Re-modification de getChildren" />
-    <option name="LAST_COMMIT_MESSAGE" value="Re-modification de getChildren" />
+    <MESSAGE value="Ca fonctionne mais l'état de mon code me donne envie de pleurer" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ca fonctionne mais l'état de mon code me donne envie de pleurer" />
   </component>
 </project>

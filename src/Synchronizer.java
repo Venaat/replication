@@ -24,7 +24,6 @@ public class Synchronizer {
                           List<String> dirtyPaths2,
                           String currentRelativePath){
 
-           // System.out.println("Current relative path : " + currentRelativePath);
             File file1 = new File(fs1.getAbsolutePathNoSyncHome(currentRelativePath));
             File file2 = new File(fs2.getAbsolutePathNoSyncHome(currentRelativePath));
 
@@ -32,19 +31,16 @@ public class Synchronizer {
                 currentRelativePath = File.separator + fs1.getSyncRoot();
             }
 
-            /* Cas n°1 : si le path indiqué n'a eu aucune modification */
-            //System.out.println(" Dirtypaths1 contient " + currentRelativePath + " ? : " + dirtyPaths1.contains(currentRelativePath));
+
+        /* Cas n°1 : si le path indiqué n'a eu aucune modification */
             if (!dirtyPaths1.contains(currentRelativePath) && !dirtyPaths2.contains(currentRelativePath))
                 return;
 
-            //System.out.println("Absolute path de " + currentRelativePath + " pour fs1 : " + file1.getAbsolutePath());
-            //System.out.println("Absolute path de " + currentRelativePath + " pour fs2 : " + file2.getAbsolutePath());
             /* Cas n°2 : si file est un dossier et dans A, et dans B */
             if (file1.isDirectory() && file2.isDirectory()){
 
                 List<String> childrenA = fs1.getChildren(file1.getPath());
                 List<String> childrenB = fs2.getChildren(file2.getPath());
-
                 List<String> plist = getPlist(childrenA, childrenB);
 
                 for (String path : plist)
@@ -55,16 +51,15 @@ public class Synchronizer {
                         path);
 
                 /* Cas n°3 : not dirty to A, dirty to B */
-            }else if (dirtyPaths2.contains(currentRelativePath)) {
+            }else if (dirtyPaths2.contains(currentRelativePath) && !dirtyPaths1.contains(currentRelativePath)) {
                 applyChanges(fs1, fs2, currentRelativePath);
 
                 /* Cas n°4 : not dirty to B, dirty to A */
-            }else if (dirtyPaths1.contains(currentRelativePath)) {
+            }else if (dirtyPaths1.contains(currentRelativePath) && !dirtyPaths2.contains(currentRelativePath)) {
                 applyChanges(fs2, fs1, currentRelativePath);
 
                 /* Cas n°5 : conflits */
             }else{
-                System.out.println(currentRelativePath);
                 manageConflict(fs1, fs2, currentRelativePath);
             }
         }
