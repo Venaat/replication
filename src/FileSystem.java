@@ -13,6 +13,7 @@ public interface FileSystem {
     public List<String> getAncestors(String path);
 
     public String getAbsolutePath(String relativePath);
+    public String getAbsolutePathNoSyncHome(String relativePath);
 
     public String getRelativePath(String absolutePath);
 

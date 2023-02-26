@@ -23,18 +23,22 @@ public class Synchronizer {
                           FileSystem fs2,
                           List<String> dirtyPaths2,
                           String currentRelativePath){
-        System.out.println("Current relative path : " + currentRelativePath);
-            File file1 = new File(fs1.getAbsolutePath(currentRelativePath));
-            File file2 = new File(fs2.getAbsolutePath(currentRelativePath));
+
+           // System.out.println("Current relative path : " + currentRelativePath);
+            File file1 = new File(fs1.getAbsolutePathNoSyncHome(currentRelativePath));
+            File file2 = new File(fs2.getAbsolutePathNoSyncHome(currentRelativePath));
 
             if (currentRelativePath.equals("") ){
                 currentRelativePath = File.separator + fs1.getSyncRoot();
             }
 
             /* Cas n°1 : si le path indiqué n'a eu aucune modification */
+            //System.out.println(" Dirtypaths1 contient " + currentRelativePath + " ? : " + dirtyPaths1.contains(currentRelativePath));
             if (!dirtyPaths1.contains(currentRelativePath) && !dirtyPaths2.contains(currentRelativePath))
                 return;
 
+            //System.out.println("Absolute path de " + currentRelativePath + " pour fs1 : " + file1.getAbsolutePath());
+            //System.out.println("Absolute path de " + currentRelativePath + " pour fs2 : " + file2.getAbsolutePath());
             /* Cas n°2 : si file est un dossier et dans A, et dans B */
             if (file1.isDirectory() && file2.isDirectory()){
 

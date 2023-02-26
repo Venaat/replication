@@ -106,6 +106,8 @@ public class LocalFileSystem implements FileSystem{
         return root + File.separator + syncRoot + relativePath;
     }
 
+    public String getAbsolutePathNoSyncHome(String relativePath) { return root + File.separator + relativePath ; }
+
     /**
      * Renvoie le path dans le dossier synchronisé, commençant par
      * le nom de la racine du dossier synchronisé.
