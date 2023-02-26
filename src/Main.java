@@ -14,6 +14,7 @@ public class Main {
 
     final static String USER_DIR = System.getProperty("user.dir");
     public static void main(String[] args) throws IOException {
+        boolean sout_debug = false;
         boolean testProperties = false;
         boolean testRelativePath = false;
         boolean testAbsolutePath = false;
@@ -22,19 +23,20 @@ public class Main {
         // Attention à bien créer la référence au moins une fois avant de lancer la synchronisation
         // Ou créer les dossiers à la main, voir doc de generateReference()
         boolean createRef = false;
-        boolean testComputeDirty = true;
+        boolean testComputeDirty = false;
         boolean testReconcile = true;
 
         String folderName = "synHome";
         String directoryRoot = USER_DIR + File.separator + folderName;
+        String directoryRootB = USER_DIR + File.separator + "systemeB" + File.separator + folderName;
 
+        // Système A
         FileSystem fileSystem = new LocalFileSystem(directoryRoot);
         FileSystem refSystem = fileSystem.getReference();
 
-        String directoryRootB = USER_DIR + File.separator + "systemeB" + File.separator + folderName;
+        // Système B
         FileSystem fileSystem2 = new LocalFileSystem(directoryRootB);
         FileSystem refSystem2 = fileSystem2.getReference();
-
 
         Synchronizer sync = new Synchronizer();
 
@@ -42,21 +44,57 @@ public class Main {
             Test des get et propriétés simples
          */
         if (testProperties){
+            System.out.println("(Main) Test propriétés : ");
+            System.out.println("--------- SystA se trouve ici : " + directoryRoot + "---------");
             System.out.println("Root A : " + fileSystem.getRoot());
             System.out.println("SyncRoot A : " + fileSystem.getSyncRoot());
             System.out.println("Référence A : " + refSystem.getRoot() + File.separator + refSystem.getSyncRoot());
+            System.out.println();
+
+            System.out.println("--------- SystB se trouve ici : " + directoryRootB + "---------");
             System.out.println("Root B : " +fileSystem2.getRoot());
             System.out.println("SyncRoot B : " + fileSystem2.getSyncRoot());
             System.out.println("Référence B : " + refSystem2.getRoot() + File.separator + refSystem2.getSyncRoot());
+            System.out.println();
         }
 
         /*
             Test fonctions AbsolutePath, RelativePath
          */
         if (testRelativePath) {
-            System.out.println("Relative path :");
-            System.out.println(fileSystem.getRelativePath(directoryRoot + "/subdir1/z.txt"));
-            System.out.println(fileSystem.getRelativePath("/Users/diana/IdeaProjects/replication/synHome/x.txt"));
+            String absolutePathA_1 = directoryRoot + File.separator + "x.txt" ;
+            String absolutePathA_2 = directoryRoot + File.separator + "subdir1" + File.separator + "z.txt";
+            String absolutePathB_1 = directoryRootB + File.separator + "x.txt";
+            String absolutePathB_2 = directoryRootB + File.separator + "subdir1" + File.separator + "z.txt";
+
+            String toRelativeA_1 = fileSystem.getRelativePath(absolutePathA_1);
+            String toRelativeA_2 = fileSystem.getRelativePath(absolutePathA_2);
+            String toRelativeB_1 = fileSystem2.getRelativePath(absolutePathB_1);
+            String toRelativeB_2 = fileSystem2.getRelativePath(absolutePathB_2);
+
+            assert(toRelativeA_1.equals(toRelativeB_1));
+            assert(toRelativeA_2.equals(toRelativeB_2));
+
+            if (sout_debug){
+                System.out.println("--------- RelativePath pour A ---------");
+                System.out.println("Chemin absolu : " + absolutePathA_1) ;
+                System.out.println("-> Chemin relatif : " + toRelativeA_1);
+                System.out.println();
+                System.out.println("Chemin absolu : " + absolutePathA_2) ;
+                System.out.println("-> Chemin relatif : " + toRelativeA_2);
+                System.out.println();
+
+
+                System.out.println("--------- RelativePath pour B ---------");
+                System.out.println("Chemin absolu : " + absolutePathB_1) ;
+                System.out.println("-> Chemin relatif : " + toRelativeB_1);
+                System.out.println();
+                System.out.println("Chemin absolu : " + absolutePathB_2) ;
+                System.out.println("-> Chemin relatif : " + toRelativeB_2);
+                System.out.println();
+            }
+
+
         }
 
         if (testAbsolutePath){
