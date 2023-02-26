@@ -26,7 +26,7 @@ public interface FileSystem {
 
     public void generateReference() throws IOException;
 
-    public File createDirectory(String path);
+    public File copyDirectory(File input, File output) throws IOException;
     public void copyFile(File input, File output) throws Exception;
     public void replace(String absolutePathTargetFS,
                         FileSystem fsSource,

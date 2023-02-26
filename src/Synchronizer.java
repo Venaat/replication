@@ -9,7 +9,7 @@ import java.io.File;
 
 public class Synchronizer {
 
-    public void synchronize(FileSystem fs1, FileSystem fs2) throws IOException {
+    public void synchronize(FileSystem fs1, FileSystem fs2) throws Exception {
         FileSystem refCopy1 = fs1.getReference();
         FileSystem refCopy2 = fs2.getReference();
 
@@ -22,7 +22,7 @@ public class Synchronizer {
                           List<String> dirtyPaths1,
                           FileSystem fs2,
                           List<String> dirtyPaths2,
-                          String currentRelativePath){
+                          String currentRelativePath) throws Exception {
 
             File file1 = new File(fs1.getAbsolutePathNoSyncHome(currentRelativePath));
             File file2 = new File(fs2.getAbsolutePathNoSyncHome(currentRelativePath));
@@ -141,25 +141,38 @@ public class Synchronizer {
     }
 
 
-    private void manageConflict(FileSystem fs1, FileSystem fs2, String currentRelativePath) {
-        currentRelativePath = StringUtils.substringAfter(currentRelativePath, File.separator);
-        System.out.println(" --- On va gérer le conflit : " + currentRelativePath);
-        System.out.println("Du fichier : " + fs1.getAbsolutePathNoSyncHome(currentRelativePath));
-        System.out.println("Avec le fichier : " + fs2.getAbsolutePathNoSyncHome(currentRelativePath));
-        System.out.println();
+    /**
+     * Choix : on priorise les changements de fs1.
+     */
+    private void manageConflict(FileSystem fs1, FileSystem fs2, String currentRelativePath) throws Exception {
+        applyChanges(fs2, fs1, currentRelativePath);
+
     }
 
     /**
-     * " Appliquer sur @param fs2
-     * les changements qu'a fait @param fs1
+     * " Appliquer sur @param shouldUpdate
+     * les changements qu'a fait @param hasChanged
      * sur le fichier au chemin @param currentRelativePath "
      */
-    private void applyChanges(FileSystem fs2, FileSystem fs1, String currentRelativePath) {
+    private void applyChanges(FileSystem shouldUpdate, FileSystem hasChanged, String currentRelativePath) throws Exception {
+        // On retire le premier slash.
+        // J'espère un jour corriger ça
         currentRelativePath = StringUtils.substringAfter(currentRelativePath, File.separator);
-        System.out.println(" --- Des changements sont appliqués ici : " + currentRelativePath);
-        System.out.println("On va copier ce fichier : " + fs1.getAbsolutePathNoSyncHome(currentRelativePath));
-        System.out.println("Sur ce fichier : " + fs2.getAbsolutePathNoSyncHome(currentRelativePath));
-        System.out.println();
+
+        // Possiblement il faudra faire un cas si directory ou non, à tester
+        String fileToCopyPath = hasChanged.getAbsolutePathNoSyncHome(currentRelativePath);
+        String copyToFilePath = shouldUpdate.getAbsolutePathNoSyncHome(currentRelativePath);
+
+        File fileToCopy = new File(fileToCopyPath);
+        File copyToFile = new File(copyToFilePath);
+
+        if (fileToCopy.isFile()){
+            shouldUpdate.copyFile(fileToCopy, copyToFile);
+        }else{
+            shouldUpdate.copyDirectory(fileToCopy, copyToFile);
+        }
+
+
 
     }
 

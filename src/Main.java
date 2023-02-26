@@ -13,7 +13,7 @@ import java.io.IOException;
 public class Main {
 
     final static String USER_DIR = System.getProperty("user.dir");
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws Exception {
         boolean sout_debug = false;
         boolean testProperties = false;
         boolean testRelativePath = false;

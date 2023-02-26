@@ -1,6 +1,4 @@
 papaya
 hello!
-lapin
-pie
-abricot
-paprika
+je suis une modification !
+je suis une modification qui a été faite en même temps que les modifications du système B, ce qui est assez dramatique quand on y pense

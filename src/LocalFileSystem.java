@@ -157,12 +157,13 @@ public class LocalFileSystem implements FileSystem{
 
     @Override
     public void copyFile(File input, File output) throws Exception {
-
+        FileUtils.copyFile(input, output);
     }
 
 
     @Override
-    public File createDirectory(String path) {
+    public File copyDirectory(File input, File output) throws IOException {
+        FileUtils.copyDirectory(input, output);
         return null;
     }
 
