@@ -32,22 +32,11 @@ public class Synchronizer {
             if (dirtyPaths1.contains(currentRelativePath) && dirtyPaths2.contains(currentRelativePath))
                 return;
 
-        /*
-            System.out.println("Abspath1 :" + file1.getAbsolutePath());
-            System.out.println("Abspath2 : " + file2.getAbsolutePath());
-            System.out.println(file1.isDirectory());
-            System.out.println(file2.isDirectory());
-
-         */
-
             /* Cas n°2 : si file est un dossier et dans A, et dans B */
             if (file1.isDirectory() && file2.isDirectory()){
 
                 List<String> childrenA = fs1.getChildren(file1.getPath());
                 List<String> childrenB = fs2.getChildren(file2.getPath());
-                /*
-                System.out.println("Children A : " + childrenA);
-                System.out.println("Children B : " + childrenB);*/
 
                 List<String> plist = getPlist(childrenA, childrenB);
 
@@ -58,11 +47,12 @@ public class Synchronizer {
                 applyChanges(fs1, fs2, currentRelativePath);
 
                 /* Cas n°4 : not dirty to B, dirty to A */
-            }else if (dirtyPaths1.contains(currentRelativePath)){
+            }else if (dirtyPaths1.contains(currentRelativePath)) {
                 applyChanges(fs2, fs1, currentRelativePath);
 
                 /* Cas n°5 : conflits */
             }else{
+                System.out.println(currentRelativePath);
                 manageConflict(fs1, fs2, currentRelativePath);
             }
         }
@@ -149,7 +139,7 @@ public class Synchronizer {
     }
 
     private void applyChanges(FileSystem fs2, FileSystem fs1, String currentRelativePath) {
-        System.out.println("Des changements sont appliqués");
+        System.out.println("Des changements sont appliqués ici : " + currentRelativePath);
 
     }
 

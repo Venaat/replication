@@ -58,7 +58,7 @@ public class LocalFileSystem implements FileSystem{
     }
 
     /**
-     * Pas encore utilisée, à tester
+     * Renvoie le chemin absolu d'un enfant
      * On dirait que ça utilise le working directory, parce que fonctionne
      * lorsqu'on lui donne "synHome" en paramètre par ex
      */
@@ -70,7 +70,7 @@ public class LocalFileSystem implements FileSystem{
             List<String> children = new ArrayList<>();
             File[] files = file.listFiles();
             for (File child : files){
-                children.add(child.getName());
+                children.add(file.getAbsolutePath() + File.separator + child.getName());
             }
 
             return children;

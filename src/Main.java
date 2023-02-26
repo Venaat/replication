@@ -18,7 +18,7 @@ public class Main {
         boolean testRelativePath = false;
         boolean testAbsolutePath = false;
         boolean testAncestors = false;
-        boolean testGetChildren = false;
+        boolean testGetChildren = true;
         // Attention à bien créer la référence au moins une fois avant de lancer la synchronisation
         // Ou créer les dossiers à la main, voir doc de generateReference()
         boolean createRef = false;
