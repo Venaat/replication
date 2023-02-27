@@ -93,9 +93,10 @@ public class Synchronizer {
     public List<String> computeDirty(FileSystem fs,
                                      FileSystem lastSync,
                                      String currentRelativePath) throws IOException {
-        List<String> dirties = computeDirtyR(fs,lastSync,currentRelativePath);
+        Set<String> dirties = new TreeSet<>();
+        dirties.addAll(computeDirtyR(fs,lastSync,currentRelativePath));
         dirties.addAll(computeDirtyR(lastSync,fs,currentRelativePath));
-        return dirties;
+        return new ArrayList<>(dirties);
     }
 
     public List<String> computeDirtyR(FileSystem fs,
