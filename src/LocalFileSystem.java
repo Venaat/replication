@@ -170,7 +170,7 @@ public class LocalFileSystem implements FileSystem{
 
     public void remove(File target) throws IOException {
         //System.out.println("[REMOVE THIS] deleting "+target);
-        FileUtils.delete(target);
+        FileUtils.forceDelete(target);
     }
 
     @Override
